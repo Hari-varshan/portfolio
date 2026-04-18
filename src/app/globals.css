@@ -1,26 +1,155 @@
 @import "tailwindcss";
 
+/* ── Design tokens ── */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light mode — warm editorial */
+  --color-cream:     #FFFCF5;
+  --color-navy:      #0A364F;
+  --color-grey:      #A3A3A3;
+  --color-accent:    #70DBCF;
+  --color-highlight: #E8E4D9;
+  --color-mint:      #DFF5EB;
+
+  /* Surfaces & borders (light) */
+  --color-card-bg:             rgba(232, 228, 217, 0.6);
+  --color-card-border:         transparent;
+  --color-timeline:            #E8E4D9;
+  --color-photo-ring:          #70DBCF;           /* cyan ring in light — same brand accent */
+  --color-highlight-letter:    var(--color-navy); /* same as parent in light — invisible override */
+}
+
+.dark {
+  /* Dark mode — deep ocean at night, cyan as hero */
+  --color-cream:     #0B0E14;
+  --color-navy:      #E8E3D6;
+  --color-grey:      #5C6471;
+  --color-accent:    #70DBCF;
+  --color-highlight: #111720;
+  --color-mint:      #0A1F18;
+
+  /* Surfaces & borders (dark) */
+  --color-card-bg:          rgba(17, 23, 32, 0.9);
+  --color-card-border:      rgba(112, 219, 207, 0.1);
+  --color-timeline:         rgba(112, 219, 207, 0.2);
+  --color-photo-ring:       #70DBCF;   /* vivid cyan ring in dark */
+  --color-highlight-letter: #70DBCF;   /* H and V glow cyan in dark */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-cream:     var(--color-cream);
+  --color-navy:      var(--color-navy);
+  --color-grey:      var(--color-grey);
+  --color-accent:    var(--color-accent);
+  --color-highlight: var(--color-highlight);
+  --color-mint:      var(--color-mint);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans:    var(--font-dm-sans);
+  --font-heading: var(--font-syne);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-cream);
+  color: var(--color-navy);
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: var(--color-accent);
+  color: var(--color-navy);
+}
+
+/* ── Vignette: subtle edge-darkening for depth on light cream background ──
+   Fixed so it stays in place as you scroll. mix-blend-mode:multiply
+   blends with page content instead of just overlaying with opacity. ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;  /* sits above all page content — pointer-events:none handles clicks */
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(0, 0, 0, 0.12) 100%
+  );
+  mix-blend-mode: multiply;
+  transition: opacity 0.35s ease;
+}
+
+/* Remove vignette in dark mode — background is already deep */
+.dark body::after {
+  opacity: 0;
+}
+
+/* ─────────────────────────────────────────────
+   Dark-mode specific overrides
+   These go beyond variable swaps to preserve
+   the visual hierarchy of each section.
+───────────────────────────────────────────── */
+
+/* Profile photo: vivid cyan ring + glow in dark (beats inline style via !important) */
+.dark .hero-photo {
+  box-shadow:
+    0 0 0 2px #70DBCF,
+    0 0 16px 6px rgba(112, 219, 207, 0.35),
+    0 0 40px 18px rgba(112, 219, 207, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Name first letters (H, V): handled via inline style using --color-highlight-letter variable.
+   This rule is a fallback only — the inline style takes priority. */
+.dark [data-highlight="true"] {
+  color: #70DBCF;
+}
+
+/* Experience timeline: subtle cyan thread */
+.dark .exp-timeline {
+  border-color: var(--color-timeline);
+}
+
+/* Experience timeline dot: ensure bg matches dark background */
+.dark .exp-dot {
+  background-color: var(--color-cream);
+}
+
+/* Cards (project + experience): visible border, darker glass surface */
+.dark .tilt-card {
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+}
+
+/* Contact cards: explicit border so they don't dissolve */
+.dark .contact-card {
+  background-color: var(--color-card-bg) !important;
+  border: 1px solid var(--color-card-border);
+}
+
+/* Contact card hover glow: more neon in dark */
+.dark .contact-card:hover {
+  border-color: rgba(112, 219, 207, 0.25);
+}
+
+/* Tech tags: legible in dark */
+.dark .tech-tag {
+  background-color: var(--color-mint);
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+/* Scroll progress glow: slightly stronger in dark */
+.dark .scroll-progress {
+  box-shadow: 0 0 16px 3px rgba(112, 219, 207, 0.6);
+}
+
+/* Role chip: semi-transparent dark glass */
+.dark .role-chip {
+  background-color: rgba(17, 23, 32, 0.8);
+  border: 1px solid rgba(112, 219, 207, 0.15);
+  color: rgba(232, 227, 214, 0.7);
 }

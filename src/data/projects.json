@@ -1,0 +1,33 @@
+{
+  "sectionTitle": "Selected Work",
+  "items": [
+    {
+      "id": "wise",
+      "title": "WISE — Web Integrated Search Engine",
+      "category": "work",
+      "tech": ["RAG", "Qwen", "Llama", "GPT-5.4-mini"],
+      "description": "Architected a highly scalable hybrid RAG system handling over 15,000 corporate filings. Engineered a querying engine routing between vector search and NL-to-SQL, returning context-aware answers with low latency."
+    },
+    {
+      "id": "filings-parser",
+      "title": "AI-Based Corporate Filings Parser",
+      "category": "work",
+      "tech": ["Pydantic", "Gemini 3 Flash", "Gemini 2.5 Pro"],
+      "description": "Designed an intelligent document processing pipeline extracting structured business data via dynamic Pydantic definitions. Implemented an \"LLM-as-a-Judge\" node to continuously evaluate extraction accuracy."
+    },
+    {
+      "id": "podcast-engine",
+      "title": "Podcast Generation Engine",
+      "category": "work",
+      "tech": ["Gemini 2.5 Flash", "Vibe Voice", "Demucs"],
+      "description": "Developed an automated B2B TTS pipeline transforming executive briefings into multi-speaker podcasts. Features contextual abbreviation expansion and artifact-free audio cloning."
+    },
+    {
+      "id": "rfp-swarm",
+      "title": "Autonomous RFP & Tender Response Swarm",
+      "category": "personal",
+      "tech": ["Python", "FastAPI", "Next.js", "PostgreSQL", "LangGraph"],
+      "description": "Architected a full-stack, multi-agent application to automate enterprise B2B proposal generation. Orchestrated a cyclical LangGraph swarm with a Pydantic state model to parse tender requirements and draft compliant technical responses autonomously."
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "HARI VARSHAN",
+  "role": "AI Engineer",
+  "tagline": "Think of me as a perpetual playground resident in the world of systems. I'm slightly obsessed with designing scalable AI architectures and wiring up robust, end-to-end pipelines — always hunting for the next big lesson hidden in the code.",
+  "ps": "P.S. This portfolio is actually a product of me messing around with \"AI vibe coding.\" I wanted to see if an AI could design a clean, solid website without it screaming \"AI DESIGNED THIS\" at the top of its digital lungs. Welcome to the experiment!",
+  "photo": "/profile.jpg",
+  "cta": {
+    "label": "View My Work",
+    "href": "#projects"
+  },
+  "skills": [
+    "Python",
+    "FastAPI",
+    "Next.js",
+    "PostgreSQL",
+    "Docker",
+    "LangGraph",
+    "Generative AI",
+    "RAG",
+    "Agentic AI"
+  ]
+}
