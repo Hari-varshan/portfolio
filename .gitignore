@@ -42,3 +42,8 @@ next-env.d.ts
 
 # ── Project-specific: AI agent instructions & personal docs ──
 # These are development/documentation tools — not part of the app.
+AGENTS.md
+CLAUDE.md
+customization.md
+system-prompt.md
+.skills/
