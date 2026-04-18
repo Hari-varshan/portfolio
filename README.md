@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# hari-varshan/portfolio
 
-## Getting Started
+> yes, I built my own portfolio. no, I will not be taking questions.
 
-First, run the development server:
+This is my personal portfolio site — the one you land on when you Google me, judge me in 4 seconds, and either close the tab or reach out. Built to make those 4 seconds count.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Live at → **[harivarshan.dev](https://harivarshan.dev)** *(or wherever I eventually deploy this)*
+
+---
+
+## what's in here
+
+A single-page portfolio for **Hari Varshan** — AI Engineer, multi-agent systems nerd, and someone who spent way too much time perfecting a scroll progress bar.
+
+- **Hero** — big name, bigger font (Fraunces, obviously), spring-animated letters that bounce on load and wave when you hover them. yes, I was bored.
+- **Selected Work** — actual things I built at work. 3D tilt on hover because flat cards are a crime.
+- **Experience** — where I've worked, what I shipped, timeline with glowing cyan dots.
+- **Contact** — cards that bounce off the screen at you when hovered. you're welcome.
+- **Dark mode** — because I couldn't choose between the cream warmth and the deep navy-black with neon cyan and decided you should have both.
+
+---
+
+## stack
+
+```
+Next.js 16   Tailwind CSS v4   Framer Motion   TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Fonts: **Fraunces** (the name, for drama) · **Geist** (headings) · **DM Sans** (body)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## running it locally
 
-## Learn More
+```bash
+npm install
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+→ [http://localhost:3000](http://localhost:3000)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**if you changed the profile photo and it still shows the old one:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```powershell
+# stop the server first, then:
+Remove-Item -Recurse -Force ".next" -ErrorAction SilentlyContinue
+npm run dev
+# then F12 → right-click refresh → "Empty Cache and Hard Reload"
+```
 
-## Deploy on Vercel
+Next.js image caching is aggressive and personal.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## editing content
+
+Everything is in `src/data/`. JSON files. No code needed.
+
+| file | controls |
+|---|---|
+| `hero.json` | name, role, tagline, P.S. note, skills |
+| `projects.json` | project cards in Selected Work |
+| `experience.json` | companies and what I built there |
+| `contact.json` | email, phone, GitHub, LinkedIn |
+
+Profile photo → `public/profile.jpg` (replace + clear cache as above)
+
+See `customization.md` for the full guide *(gitignored, lives locally)*.
+
+---
+
+## deploying
+
+Works out of the box on **Vercel**. Connect the repo, it detects Next.js, done.
+
+```bash
+npm run build   # verify before pushing
+```
+
+---
+
+## why did you build this yourself
+
+because I wanted to. also because every template looked like every other template and I have opinions.
+
+---
+
+*— Hari Varshan, probably debugging at 11pm*
