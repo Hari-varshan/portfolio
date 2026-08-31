@@ -32,6 +32,10 @@ Fonts: **Fraunces** (the name, for drama) · **Geist** (headings) · **DM Sans**
 
 ## running it locally
 
+### Prerequisites
+
+Make sure Node.js and npm are installed before running the project.
+
 ```bash
 npm install
 npm run dev
